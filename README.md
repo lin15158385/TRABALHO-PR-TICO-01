@@ -22,7 +22,7 @@ Implementação manual das colisões e física básica (não utiliza motor físi
 Definição de constantes para fácil ajuste da velocidade, tamanhos e posições.
 
 Instruções de jogo:
-Mover a barra: teclas Esquerda (←) e Direita (→).
+Mover a barra: teclas Esquerda (←) e Direita (→).(espaço para resetar ou continuar)
 
 Objetivo: destruir todos os blocos.
 
@@ -33,31 +33,43 @@ Estrutura do projeto:
 
 Breakout/
 │
-├── Breakout/
+├── Project1/(esqueci mudar o nome quando criei e pastei o ficheiro para novo VSudio monogame)
 │   ├── Ball.cs
-│   ├── Brick.cs
-│   ├── Paddle.cs
+│   ├── Block.cs
+│   ├── BlockManager.cs
+│   ├── Player.cs
 │   ├── Game1.cs
+│   ├── GameObject.cs
+│   ├── Utils.cs
 │   └── Program.cs
 │
 ├── Content/
 │   ├── ball.png
-│   ├── brick.png
-│   ├── paddle.png
-│   └── Content.mgcb (Content Pipeline file)
+│   ├── block.png
+│   ├── player.png
+│   ├── hit.wav (som da collisao entra ball e block)
+│   ├── lose.wav (simples,quando perdes)
+│   ├── 3up.wav (quando acabas o jogo,como projeto nao ha proximo nivel,won.wav ou win.wav parece mais certo)
+│   └── Content.mgcb 
 │
-├── Breakout.csproj
+├── projet1.csproj
 └── README.md
+
+
 Explicação das pastas e ficheiros:
-Breakout/: código-fonte principal em C#.
+project/: código-fonte principal em C#.
 
 Game1.cs: loop principal do jogo (update, draw, gestão de estados).
 
 Ball.cs: comportamento da bola (movimento, colisões).
 
-Paddle.cs: lógica da barra controlada pelo jogador.
+Player.cs: lógica da barra controlada pelo jogador.
 
-Brick.cs: representação dos blocos que devem ser destruídos.
+Block.cs: representação dos blocos que devem ser destruídos.
+
+BlockManager.cs: collisao do bloco,deteção do vencimento e eliminacao do bloco
+
+GameObject.cs: tela do jogo
 
 Program.cs: ponto de entrada que inicia o jogo.
 
@@ -68,6 +80,8 @@ ball.png, brick.png, paddle.png: imagens para representar os objetos do jogo.
 Breakout.csproj: ficheiro de projeto C# para Visual Studio.
 
 README.md: descrição básica do projeto.
+
+hit,lose,3up.wav: sonoras do jogo  
 
 4. Análise dos Códigos
 Organização:
@@ -84,31 +98,33 @@ Utiliza boas práticas de C# como propriedades (get/set) e construtores organiza
 
 Utilização correta de sprites e vetores (Vector2) para gerenciar posições.
 
+Utilização de soms para uma melhor experiência de jogo
+
 Principais funções e classes:
 Ball.Update(): atualiza a posição da bola e trata colisões com as paredes, a barra e os blocos.
 
-Paddle.Update(): move a barra em resposta às teclas pressionadas.
+Player.Move(): move a barra em resposta às teclas pressionadas.
 
-Brick.Draw(): desenha os blocos no ecrã se eles ainda não foram destruídos.
+Block.Draw(): desenha os blocos no ecrã se eles ainda não foram destruídos.
 
 Game1.Update(): chamada em cada frame para atualizar todos os objetos do jogo.
 
 Game1.Draw(): responsável por desenhar todos os elementos na tela.
 
+Utils.isColliding(): colisao da parede/limite do jogo. 
+
 Boas práticas usadas:
 Separação de responsabilidades: cada classe faz apenas uma função específica.
-
-Uso do Content Pipeline para carregar texturas corretamente.
 
 Gestão de colisões feita de forma manual e clara (sem usar física pesada).
 
 Código comentado em pontos-chave para ajudar na compreensão.
 
 Pequenos pontos que poderiam ser melhorados:
-O jogo atualmente tem apenas um nível e não há sistema de vidas.
+O jogo atualmente tem apenas um nível e não descreve quantas vidas sao(sao 3 na verdade).
 
-Não possui efeitos sonoros ou música.
+Possui poucos efeitos sonoros ou música.
 
-Não há um menu inicial ou tela de game over — apenas o encerramento do jogo.
+Não há um menu inicial 
 
 (um jogo mesmo simples.)
