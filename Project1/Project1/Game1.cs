@@ -124,6 +124,18 @@ namespace breakout
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+
+            _spriteBatch.DrawString(font, "vidas:" + ballAlives.ToString(),
+                         new Vector2(2, 2),
+                         Color.White, // Cor da letra
+                         0f, //Rotação
+                         Vector2.Zero, // Origem
+                         1f, // Escala
+                         SpriteEffects.None, //FlipHorizontally, //Sprite effect
+                         0);//adicionei eu proprio
+
+
             if (blockManager.CheckIfWin() && ballAlives > 0) {
                 _spriteBatch.DrawString(font, "You win!",
                 new Vector2(_graphics.PreferredBackBufferWidth / 2 - 60, _graphics.PreferredBackBufferHeight / 2), Color.White
