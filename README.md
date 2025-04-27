@@ -121,7 +121,7 @@ Gestão de colisões feita de forma manual e clara (sem usar física pesada).
 Código comentado em pontos-chave para ajudar na compreensão.
 
 Pequenos pontos que poderiam ser melhorados:
-O jogo atualmente tem apenas um nível e não descreve quantas vidas sao(sao 3 na verdade).
+O jogo atualmente tem apenas um nível e não descreve quantas vidas sao(sao 3 na verdade).(adicionei codigo para que consiga ver quantas vida tem)
 
 Possui poucos efeitos sonoros ou música.
 
